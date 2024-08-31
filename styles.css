@@ -5,6 +5,21 @@
     box-sizing: border-box;
 }
 
+
+/* Styl dla całego dokumentu */
+html, body {
+    height: 100%; /* Ustawia wysokość na 100% */
+    overflow: hidden; /* Ukrywa pasek przewijania */
+}
+
+/* Styl dla kontenera głównego */
+.container {
+    height: 100vh; /* Ustawia wysokość kontenera na 100% wysokości widoku */
+    overflow: auto; /* Dodaje pasek przewijania tylko dla kontenera */
+    box-sizing: border-box; /* Wlicza padding i border do szerokości i wysokości */
+}
+
+
 /* Styl dla całego ciała strony */
 body {
     font-family: Arial, sans-serif;
