@@ -5,13 +5,6 @@
     box-sizing: border-box;
 }
 
-@media (max-width: 600px) {
-    .container {
-        padding: 10px;
-    }
-}
-
-
 /* Styl dla całego dokumentu */
 html, body {
     height: 100%; /* Ustawia wysokość na 100% */
@@ -23,8 +16,8 @@ html, body {
     height: 100vh; /* Ustawia wysokość kontenera na 100% wysokości widoku */
     overflow: auto; /* Dodaje pasek przewijania tylko dla kontenera */
     box-sizing: border-box; /* Wlicza padding i border do szerokości i wysokości */
+    padding: 10px; /* Domyślne paddingi */
 }
-
 
 /* Styl dla całego ciała strony */
 body {
@@ -125,6 +118,7 @@ section.show {
     justify-content: center;
 }
 
+/* Styl dla pojedynczego produktu */
 .product-item {
     background-color: #444;
     padding: 20px;
@@ -404,18 +398,15 @@ form button {
     }
 
     .product-item {
-        width: 100%;
+        width: 100%; /* Produkty zajmują całą szerokość ekranu */
     }
 
     header .animated-heading {
         font-size: 2.5rem;
     }
-}
 
-/* Ukrywanie banera hurtowego na małych ekranach */
-@media (max-width: 768px) {
     #wholesaleBanner {
-        display: none;
+        display: none; /* Ukrywanie banera hurtowego */
     }
 }
 
@@ -432,7 +423,7 @@ form button {
     }
 
     .product-item img {
-        width: 100%;
+        width: 70%;
         height: auto;
     }
 
@@ -455,6 +446,4 @@ form button {
     .buttons {
         margin-top: 30px;
     }
-}
-}
 }
