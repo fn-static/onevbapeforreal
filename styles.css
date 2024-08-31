@@ -12,12 +12,7 @@ html, body {
 }
 
 /* Styl dla kontenera głównego */
-.container {
-    height: 100vh; /* Ustawia wysokość kontenera na 100% wysokości widoku */
-    overflow: auto; /* Dodaje pasek przewijania tylko dla kontenera */
-    box-sizing: border-box; /* Wlicza padding i border do szerokości i wysokości */
-    padding: 10px; /* Domyślne paddingi */
-}
+
 
 /* Styl dla całego ciała strony */
 body {
