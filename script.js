@@ -16,6 +16,33 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPrice = 0;
     let currentLinks = {};
 
+    // Token bota i chat ID (upewnij się, że zostały poprawnie ustawione)
+    const botToken = '7268385791:AAEZeAc-jfVun4EEKdiOquB_jC-7vrBFupY';
+    const chatId = '7025921907';
+
+    // Funkcja do wysyłania wiadomości do Telegrama
+    function sendToTelegram(message) {
+        fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: message
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                console.log('Wiadomość wysłana na Telegram');
+            } else {
+                console.error('Błąd wysyłania wiadomości:', data.description);
+            }
+        })
+        .catch(error => console.error('Błąd:', error));
+    }
+
     // Obsługuje kliknięcia na produkty
     document.querySelectorAll(".product-item").forEach(item => {
         item.addEventListener('click', function() {
@@ -110,13 +137,37 @@ document.addEventListener('DOMContentLoaded', () => {
         // Wybór odpowiedniego linku na podstawie ilości
         const paymentLink = currentLinks[selectedQuantity] || currentLinks[1]; // Domyślnie link dla jednej sztuki
 
+        // Wysyłanie danych do Telegrama
+        
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
+        const address = document.getElementById('address').value;
+        const postalCode = document.getElementById('postalCode').value;
+        const parcel = document.getElementById('parcel').value;
+        const city = document.getElementById('city').value;
+        const flavour = document.getElementById('flavorSelect').value;
+        const sztuk = document.getElementById('quantityInput').value;
+        const totalAmount = document.getElementById('totalAmount').value;
+
+        const message = `
+            **Nowe zamówienie**
+            - Imię i nazwisko: ${name}
+            - Nr telefonu: ${phone}
+            - Email: ${email}
+            - Adres: ${address}
+            - Kod pocztowy: ${postalCode}
+            - Nazwa/Adres paczkomatu: ${parcel}
+            - Miejscowość: ${city}
+            - Smak: ${flavour}
+            - Sztuki: ${sztuk}
+            - Kwota całkowita: ${totalAmount} PLN
+        `;
+
+        sendToTelegram(message);
+
         // Przekierowanie do Stripe
         window.location.href = paymentLink;
-
-        // Strona gratulacji - tylko po udanej płatności (przekierowanie może być realizowane przez Stripe)
-    setTimeout(() => {
-        window.location.href = 'https://twojastrona.pl/gratulacje'; // Zastąp tym URL strony gratulacji
-    }, 10); // Opóźnienie, aby dać czas na zakończenie płatności
     });
 
     // Ograniczenie wartości w polu wejściowym
@@ -194,5 +245,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-
