@@ -14,10 +14,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Zamieniam height na min-height */
+    height: 100vh;
     margin: 0;
     text-align: center;
-    padding: 10px; /* Dodano padding, aby lepiej wyświetlać na małych ekranach */
 }
 
 /* Styl dla nagłówka */
@@ -41,6 +40,26 @@ header {
     transform: translateY(20px);
     animation: fadeInOut 3s infinite;
 }
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dodanie opóźnienia animacji do każdego span */
+.animated-heading span:nth-child(1) { animation-delay: 0s; }
+.animated-heading span:nth-child(2) { animation-delay: 0.3s; }
+.animated-heading span:nth-child(3) { animation-delay: 0.6s; }
+.animated-heading span:nth-child(4) { animation-delay: 0.9s; }
+.animated-heading span:nth-child(5) { animation-delay: 1.2s; }
+.animated-heading span:nth-child(6) { animation-delay: 1.5s; }
+.animated-heading span:nth-child(7) { animation-delay: 1.8s; }
 
 /* Styl dla przycisków */
 .buttons {
@@ -117,7 +136,7 @@ section.show {
     margin-top: 10px;
 }
 
-/* Modal */
+/* Styl dla modala */
 .modal {
     position: fixed;
     top: 50%;
@@ -135,13 +154,11 @@ section.show {
     transition: opacity 0.3s ease;
 }
 
-/* Ukrywa modal */
 .modal.hidden {
     opacity: 0;
     pointer-events: none;
 }
 
-/* Modal content */
 .modal-content {
     background: #222;
     padding: 20px;
@@ -182,9 +199,37 @@ section.show {
     background: rgba(0, 0, 0, 0.7);
 }
 
-.modal label, .modal input, .modal select, .modal button {
+.modal label {
+    display: block;
+    margin: 10px 0;
+    color: white;
+}
+
+.modal select, .modal input {
+    padding: 10px;
     width: 100%;
     margin-bottom: 10px;
+    border-radius: 5px;
+    border: 2px solid #555;
+    background-color: #333;
+    color: white;
+}
+
+.modal button {
+    background: linear-gradient(145deg, #444, #222);
+    color: white;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #555;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.modal button:hover {
+    background: linear-gradient(145deg, #555, #333);
+    transform: translateY(-5px);
 }
 
 /* Styl dla koszyka */
@@ -225,6 +270,51 @@ section.show {
 
 .cart-content.hidden {
     display: none;
+}
+
+#cartItems {
+    list-style: none;
+    padding: 0;
+}
+
+#cartItems li {
+    margin-bottom: 10px;
+}
+
+#checkoutButton {
+    background: linear-gradient(145deg, #444, #222);
+    color: white;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #555;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#checkoutButton:hover {
+    background: linear-gradient(145deg, #555, #333);
+}
+
+#backButton {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(145deg, #444, #222);
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: 2px solid #555;
+    border-radius: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background 0.3s, transform 0.3s;
+}
+
+#backButton:hover {
+    background: linear-gradient(145deg, #555, #333);
+    transform: translateY(-5px);
 }
 
 /* Styl dla formularza kontaktowego */
@@ -294,11 +384,18 @@ form button {
     }
 
     .product-item {
-        width: 100%; /* Zajmuje całą szerokość na małych ekranach */
+        width: 100%;
     }
 
     header .animated-heading {
-        font-size: 2.5rem; /* Zmniejszenie rozmiaru nagłówka na mniejszych ekranach */
+        font-size: 2.5rem;
+    }
+}
+
+/* Ukrywanie banera hurtowego na małych ekranach */
+@media (max-width: 768px) {
+    #wholesaleBanner {
+        display: none;
     }
 }
 
@@ -310,7 +407,7 @@ form button {
     }
 
     #backButton {
-        padding: 8px 16px; /* Mniejsze padding na mniejszych ekranach */
+        padding: 8px 16px;
         font-size: 0.8rem;
     }
 
