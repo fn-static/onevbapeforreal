@@ -11,8 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const orderForm = document.getElementById('orderForm');
     const wholesaleBanner = document.getElementById("wholesaleBanner");
     const promoBanner = document.getElementById("promoBanner");
-    const express = require('express');
-    const stripe = require('stripe')('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'); // Twój klucz tajny Stripe
 
     let currentProductId = null;
     let currentPrice = 0;
@@ -114,6 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Przekierowanie do Stripe
         window.location.href = paymentLink;
+
+        // Strona gratulacji - tylko po udanej płatności (przekierowanie może być realizowane przez Stripe)
+    setTimeout(() => {
+        window.location.href = 'https://twojastrona.pl/gratulacje'; // Zastąp tym URL strony gratulacji
+    }, 10); // Opóźnienie, aby dać czas na zakończenie płatności
     });
 
     // Ograniczenie wartości w polu wejściowym
@@ -193,53 +196,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-const stripe = Stripe('pk_live_51Pb86nEwxRR5jgDum9x9Mr1tgAJz1BIqQMWYDiXZ2HHUhWQfP6j4k92DYiOihrGGqrOXqIVeAcSLzdQQYGtL6gCv00A9birhfS'); // Twój klucz publikacyjny Stripe
-
-// Funkcja do utworzenia sesji płatności
-async function createCheckoutSession() {
-    const response = await fetch('/create-checkout-session', {
-        method: 'POST',
-    });
-    const sessionId = await response.json();
-
-    const result = await stripe.redirectToCheckout({
-        sessionId: sessionId.id,
-    });
-
-    if (result.error) {
-        console.error(result.error.message);
-    }
-}
-
-// Wywołanie funkcji po kliknięciu przycisku
-document.querySelector('#checkoutButton').addEventListener('click', createCheckoutSession);
-
-
-
-const app = express();
-app.use(express.static('public')); // Folder z plikami statycznymi, np. strona gratulacyjna
-
-app.post('/create-checkout-session', async (req, res) => {
-    const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
-        line_items: [
-            {
-                price_data: {
-                    currency: 'usd',
-                    product_data: {
-                        name: 'Produkt',
-                    },
-                    unit_amount: 1000,
-                },
-                quantity: 1,
-            },
-        ],
-        mode: 'payment',
-        success_url: '', // URL do strony gratulacyjnej
-        cancel_url: 'https://yourdomain.com/cancel.html', // URL do strony anulowania płatności
-    });
-
-    res.json({ id: session.id });
-});
-
-app.listen(4242, () => console.log('Server running on port 4242'));
