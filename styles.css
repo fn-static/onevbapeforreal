@@ -5,30 +5,16 @@
     box-sizing: border-box;
 }
 
-/* Styl dla całego dokumentu */
-html, body {
-    height: 100%; /* Ustawia wysokość na 100% */
-    overflow: auto; /* Pozwala przewijać stronę */
-}
-
-/* Styl dla kontenera głównego */
-.container {
-    min-height: 100vh; /* Ustawia minimalną wysokość kontenera na 100% wysokości widoku */
-    overflow: auto; /* Dodaje pasek przewijania tylko dla kontenera */
-    box-sizing: border-box; /* Wlicza padding i border do szerokości i wysokości */
-    padding: 10px; /* Domyślne paddingi */
-}
-
 /* Styl dla całego ciała strony */
 body {
     font-family: Arial, sans-serif;
-    background-color: #000; /* Czarny kolor tła */
-    color: #fff; /* Biały kolor tekstu */
+    background-color: black;
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
     margin: 0;
     text-align: center;
 }
@@ -118,13 +104,12 @@ section.show {
     justify-content: center;
 }
 
-/* Styl dla pojedynczego produktu */
 .product-item {
     background-color: #444;
     padding: 20px;
     border-radius: 8px;
     color: white;
-    width: 250px;
+    width: 250px; /* Zwiększenie rozmiaru kontenera produktu */
     text-align: center;
     cursor: pointer;
     transition: transform 0.3s;
@@ -147,18 +132,17 @@ section.show {
 /* Styl dla ceny produktu */
 .price {
     font-size: 1.1rem;
-    color: #FFD700;
+    color: #FFD700; /* Złoty kolor dla ceny */
     margin-top: 10px;
 }
 
-/* Styl dla modala */
 .modal {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 800px;
+    width: 90%; /* Ustaw szerokość na 90% dostępnej szerokości */
+    max-width: 800px; /* Maksymalna szerokość */
     background: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: center;
@@ -169,10 +153,13 @@ section.show {
     transition: opacity 0.3s ease;
 }
 
+/* Ukrywa modal */
 .modal.hidden {
     opacity: 0;
     pointer-events: none;
 }
+
+
 
 .modal-content {
     background: #222;
@@ -180,10 +167,10 @@ section.show {
     border-radius: 10px;
     text-align: center;
     position: relative;
-    width: 100%;
-    height: auto;
-    max-height: 90vh;
-    overflow-y: auto;
+    width: 100%; /* Zajmuje całą szerokość dostępnej przestrzeni */
+    height: auto; /* Automatyczna wysokość, aby dostosować się do zawartości */
+    max-height: 90vh; /* Maksymalna wysokość, aby nie wychodzić poza ekran */
+    overflow-y: auto; /* Dodanie przewijania, jeśli zawartość jest zbyt długa */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -191,10 +178,10 @@ section.show {
 }
 
 .modal-content img {
-    width: 150px;
+    width: 150px; /* Zwiększona szerokość obrazu */
     height: auto;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Dodatkowy odstęp od tekstu */
 }
 
 .modal-content .close {
@@ -214,6 +201,7 @@ section.show {
     background: rgba(0, 0, 0, 0.7);
 }
 
+/* Styl dla wyboru smaku, ilości i przycisku dodania do koszyka */
 .modal label {
     display: block;
     margin: 10px 0;
@@ -277,7 +265,7 @@ section.show {
     padding: 20px;
     border-radius: 10px;
     position: absolute;
-    bottom: 60px;
+    bottom: 60px; /* Odstęp od przycisku koszyka */
     left: 0;
     width: 300px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -323,7 +311,7 @@ section.show {
     border: 2px solid #555;
     border-radius: 30px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 1000; /* Upewnij się, że przycisk jest na wierzchu */
     transition: background 0.3s, transform 0.3s;
 }
 
@@ -334,10 +322,10 @@ section.show {
 
 /* Styl dla formularza kontaktowego */
 form label {
-    display: block;
-    margin: 10px 0;
-    color: white;
-    font-size: 1rem;
+    display: block; /* Upewnij się, że etykieta jest blokowa */
+    margin: 10px 0; /* Dodaj marginesy, aby była oddzielona od innych elementów */
+    color: white; /* Kolor tekstu */
+    font-size: 1rem; /* Ustaw rozmiar czcionki */
 }
 
 form input, form textarea {
@@ -346,6 +334,10 @@ form input, form textarea {
     border-radius: 5px;
     background-color: #333;
     color: white;
+}
+
+#paymentMethod {
+    margin-top: 30px; /* Większy odstęp powyżej metody płatności */
 }
 
 form button {
@@ -358,92 +350,212 @@ form button {
     cursor: pointer;
 }
 
-/* Stylizacja banerów */
-#promoBanner, #wholesaleBanner {
+form button:hover {
+    background: linear-gradient(145deg, #555, #333);
+}
+
+/* Styl po animacji - zmniejszenie i przesunięcie logo */
+header.small {
+    top: 0;
     position: fixed;
-    left: 10px;
-    z-index: 1000;
+    justify-content: center;
+}
+
+header.small .animated-heading {
+    font-size: 2rem;
+    margin-top: 10px;
+}
+
+/* Styl dla modalu zamówienia */
+#orderModal .modal-content {
+    width: 400px; /* Zmniejszona szerokość modalu */
+    height: auto; /* Automatyczna wysokość, aby dostosować się do zawartości */
+    max-height: 90vh; /* Maksymalna wysokość, aby nie wychodzić poza ekran */
+    overflow-y: auto; /* Dodanie przewijania, jeśli zawartość jest zbyt długa */
+}
+
+#orderModal label {
+    display: block;
+    margin: 8px 0; /* Zmniejszone marginesy */
+    color: white;
+}
+
+#orderModal input, #orderModal select {
+    padding: 8px; /* Zmniejszone paddingi */
+    width: 100%;
+    margin-bottom: 8px; /* Zmniejszone odstępy */
     border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-size: 14px;
-    color: #000;
-    background-color: #f9f9f9;
+    border: 2px solid #555;
+    background-color: #333;
+    color: white;
 }
 
-#promoBanner {
-    bottom: 10px;
+#orderModal button {
+    background: linear-gradient(145deg, #444, #222);
+    color: white;
+    padding: 8px; /* Zmniejszone paddingi */
+    font-size: 0.9rem; /* Zmniejsza rozmiar czcionki */
+    border: 2px solid #555;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s, transform 0.3s;
 }
 
-#wholesaleBanner {
-    bottom: 50px;
-    max-width: 300px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#orderModal button:hover {
+    background: linear-gradient(145deg, #555, #333);
+    transform: translateY(-5px);
 }
 
-/* Responsywność dla ekranów o szerokości poniżej 768px */
+
+/* styles.css */
+
+/* Styl dla nieaktywnego przycisku */
+#stripePayButton.inactive {
+    background-color: #f8d7da; /* Jasny czerwony odcień dla nieaktywnego */
+    color: #721c24; /* Ciemny kolor tekstu dla nieaktywnego */
+    cursor: not-allowed; /* Zmieniaj kursor na nieaktywny */
+    border: 2px solid #721c24; /* Czerwony border dla nieaktywnego */
+    padding: 12px 24px; /* Większe padding dla lepszej widoczności */
+    font-size: 18px; /* Zwiększony rozmiar czcionki */
+    border-radius: 8px; /* Zaokrąglone rogi */
+    text-transform: uppercase; /* Wielkie litery dla lepszej czytelności */
+    font-weight: bold; /* Pogrubiona czcionka */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Cień dla lepszej widoczności */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Płynne przejście */
+}
+
+/* Styl dla aktywnego przycisku */
+#stripePayButton.active {
+    background-color: #28a745; /* Zielony odcień dla aktywnego */
+    color: #fff; /* Kolor tekstu dla aktywnego */
+    cursor: pointer; /* Zmieniaj kursor na wskaźnik */
+    border: 2px solid #28a745; /* Zielony border dla aktywnego */
+    padding: 12px 24px; /* Większe padding dla lepszej widoczności */
+    font-size: 18px; /* Zwiększony rozmiar czcionki */
+    border-radius: 8px; /* Zaokrąglone rogi */
+    text-transform: uppercase; /* Wielkie litery dla lepszej czytelności */
+    font-weight: bold; /* Pogrubiona czcionka */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Cień dla lepszej widoczności */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Płynne przejście */
+}
+
+/* Styl dla przycisku podczas najechania */
+#stripePayButton.active:hover {
+    background-color: #218838; /* Ciemniejszy zielony przy najechaniu */
+    border-color: #1e7e34; /* Ciemniejszy zielony border przy najechaniu */
+}
+
+.form-text {
+    font-size: 14px; /* Rozmiar czcionki */
+    color: #6c757d; /* Kolor tekstu */
+    margin-top: 5px; /* Odstęp od pola formularza */
+}
+
+
 @media (max-width: 768px) {
     .buttons {
         flex-direction: column;
         align-items: center;
-        gap: 10px;
     }
 
-    .product-list {
-        flex-direction: column;
-        gap: 10px;
+    #products {
+        padding: 10px;
     }
 
     .product-item {
-        width: 100%; /* Produkty zajmują całą szerokość ekranu */
-    }
-
-    header .animated-heading {
-        font-size: 2.5rem;
-    }
-
-    #wholesaleBanner {
-        display: none; /* Ukrywanie banera hurtowego */
+        width: 100%;
+        text-align: center;
     }
 }
 
-/* Responsywność dla ekranów o szerokości poniżej 480px */
 @media (max-width: 480px) {
     .modal-content {
         width: 90%;
         padding: 10px;
     }
 
-    #backButton {
-        padding: 8px 16px;
-        font-size: 0.8rem;
-    }
-
     .product-item img {
         width: 100%;
         height: auto;
     }
+}
 
+
+#promoBanner {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color: #eaf7e3; /* Jasny zielony */
+    color: #004d00; /* Ciemniejszy zielony dla tekstu */
+    border: 1px solid #c4e1c1; /* Jasnozielone obramowanie */
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    z-index: 1000; /* Aby baner był nad innymi elementami */
+}
+
+#promoBanner p {
+    margin: 0;
+}
+
+#promoBanner strong {
+    color: #006600; /* Intensywny zielony dla kodu promocyjnego */
+}
+
+/* Responsywność */
+@media (max-width: 600px) {
     #promoBanner {
-        left: 5px;
+        left: 5px; /* Mniejsze odstępy na mniejszych ekranach */
         bottom: 5px;
-        padding: 8px;
-        font-size: 12px;
-        max-width: 90%;
+        padding: 8px; /* Mniejsze padding na mniejszych ekranach */
+        font-size: 12px; /* Mniejsza czcionka na mniejszych ekranach */
+        max-width: 90%; /* Maksymalna szerokość dla mniejszych ekranów */
     }
+}
 
-    #wholesaleBanner {
-        left: 5px;
-        bottom: 45px;
-        padding: 8px;
-        font-size: 12px;
-        max-width: 90%;
-    }
 
-    .buttons {
-        margin-top: 30px;
-    }
+
+/* Stylizacja banera */
+#wholesaleBanner {
+    position: fixed;
+    bottom: 50px; /* Ustawienie nad banerem kodu promocyjnego */
+    left: 10px;
+    background-color: #f9f9f9; /* Jasny szary dla kontrastu */
+    color: #333; /* Ciemniejszy kolor tekstu */
+    border: 1px solid #ccc; /* Szare obramowanie */
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    z-index: 1000; /* Aby baner był nad innymi elementami */
+    max-width: 300px; /* Maksymalna szerokość banera */
+    text-align: center; /* Wyśrodkowanie tekstu */
+    display: flex; /* Użycie flexboxa */
+    flex-direction: column; /* Ułożenie elementów w kolumnie */
+    align-items: center; /* Wyrównanie elementów w pionie */
+}
+
+#wholesaleBanner p {
+    margin: 0;
+}
+
+#wholesaleDetails {
+    margin-top: 10px;
+    display: none; /* Domyślnie ukryty */
+}
+
+#wholesaleBanner button {
+    margin-top: 10px;
+    background-color: #007bff; /* Kolor przycisku */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#wholesaleBanner button:hover {
+    background-color: #0056b3; /* Ciemniejszy kolor przycisku na hover */
 }
