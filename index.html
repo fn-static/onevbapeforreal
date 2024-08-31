@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneVape</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="animated-heading">
+            <span>O</span>
+            <span>n</span>
+            <span>e</span>
+            <span>V</span>
+            <span>a</span>
+            <span>p</span>
+            <span>e</span>
+        </h1>
+    </header>
+
+    <div class="buttons">
+        <button id="productsButton">Produkty</button>
+        <button id="contactButton">Kontakt</button>
+    </div>
+
+    <!-- Sekcja produktów -->
+    <section id="products" class="hidden">
+        
+        <div class="product-list">
+            <div class="product-item" data-product="1" data-price="29.99">
+                <img src="product1.jpg" alt="Produkt 1">
+                <p>Produkt 1</p>
+                <p class="price">Cena: 29.99 PLN</p>
+                <!-- Dodany przycisk płatności z bazowym linkiem -->
+                <button class="buyNowButton" data-link1="https://buy.stripe.com/9AQeWJ6TOd2j1mEbIZ" data-link2="https://buy.stripe.com/your_link_for_2_items" data-link3="https://buy.stripe.com/your_link_for_3_items">Kup teraz</button>
+            </div>
+
+            <div class="product-item" data-product="2" data-price="30.99">
+                <img src="product1.jpg" alt="Produkt 2">
+                <p>Produkt 2</p>
+                <p class="price">Cena: 30.99 PLN</p>
+                <!-- Dodany przycisk płatności z bazowym linkiem -->
+                <button class="buyNowButton" data-link1="https://buy.stripe.com/9AQeWJ6TOd2j1mEbIZ" data-link2="https://buy.stripe.com/your_link_for_2_items" data-link3="https://buy.stripe.com/your_link_for_3_items">Kup teraz</button>
+            </div>
+
+            <div class="product-item" data-product="3" data-price="30.99">
+                <img src="product1.jpg" alt="Produkt 3">
+                <p>Produkt 3</p>
+                <p class="price">Cena: 30.99 PLN</p>
+                <!-- Dodany przycisk płatności z bazowym linkiem -->
+                <button class="buyNowButton" data-link1="https://buy.stripe.com/9AQeWJ6TOd2j1mEbIZ" data-link2="https://buy.stripe.com/your_link_for_2_items" data-link3="https://buy.stripe.com/your_link_for_3_items">Kup teraz</button>
+            </div>
+
+            <div class="product-item" data-product="4" data-price="30.99">
+                <img src="product1.jpg" alt="Produkt 4">
+                <p>Produkt 2</p>
+                <p class="price">Cena: 30.99 PLN</p>
+                <!-- Dodany przycisk płatności z bazowym linkiem -->
+                <button class="buyNowButton" data-link1="https://buy.stripe.com/9AQeWJ6TOd2j1mEbIZ" data-link2="https://buy.stripe.com/your_link_for_2_items" data-link3="https://buy.stripe.com/your_link_for_3_items">Kup teraz</button>
+            </div>
+
+            <div class="product-item" data-product="5" data-price="30.99">
+                <img src="product1.jpg" alt="Produkt 5">
+                <p>Produkt 2</p>
+                <p class="price">Cena: 30.99 PLN</p>
+                <!-- Dodany przycisk płatności z bazowym linkiem -->
+                <button class="buyNowButton" data-link1="https://buy.stripe.com/9AQeWJ6TOd2j1mEbIZ" data-link2="https://buy.stripe.com/your_link_for_2_items" data-link3="https://buy.stripe.com/your_link_for_3_items">Kup teraz</button>
+            </div>
+
+            
+
+            <!-- Dodaj więcej produktów w podobny sposób -->
+        </div>
+    </section>
+
+    <!-- Modal produktu -->
+    <div id="productModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" id="closeProductModal">&times;</span>
+            <img id="modalImage" src="" alt="Zdjęcie produktu">
+            <p id="modalText"></p>
+
+            <!-- Wybór smaku -->
+            <label for="flavorSelect">Wybierz smak:</label>
+            <select id="flavorSelect">
+                <option value="mango">Mango</option>
+                <option value="blueberry">Jagoda</option>
+                <option value="strawberry">Truskawka</option>
+            </select>
+
+            <!-- Wybór ilości -->
+            <label for="quantityInput">Wybierz ilość:</label>
+            <input id="quantityInput" type="number" min="1" max="10" step="1" value="1">
+
+            <!-- Przycisk "Zapłać teraz" -->
+            <button id="payNowButton">Zapłać teraz</button>
+        </div>
+    </div>
+
+    <!-- Modal zamówienia -->
+    <div id="orderModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" id="closeOrderModal">&times;</span>
+            
+            <form id="orderForm">
+                <!-- Formularz zamówienia -->
+                
+
+
+
+
+                <label for="name">Imię i Nazwisko:</label>
+                <input id="name" name="name" type="text" required>
+                <label for="phone">Nr telefonu:</label>
+                <input id="phone" name="phone" type="tel" required>
+                <label for="email">Email:</label>
+                <input id="email" name="email" type="email" required>
+                <label for="address">Adres:</label>
+                <input id="address" name="address" type="text" required>
+                <label for="postalCode">Kod pocztowy:</label>
+                <input id="postalCode" name="postalCode" type="text" required>
+                <label for="parcel">Nazwa/Adres paczkomatu:</label>
+                <input id="parcel" name="parcel" type="text">
+                <small class="form-text">Jeśli chcesz dostawę do domu, pozostaw to pole puste.</small>
+                <label for="city">Miejscowość:</label>
+                <input id="city" name="city" type="text" required>
+
+                <input type="hidden" id="totalAmount" name="totalAmount" value="">
+
+                <button type="button" id="stripePayButton">Zapłać kartą</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Baner z informacją o sprzedaży hurtowej -->
+<div id="wholesaleBanner">
+    <p><strong>Zainteresowany kupnem hurtowo?</strong></p>
+    <div id="wholesaleDetails" class="hidden">
+        <p>Oferujemy atrakcyjne warunki dla klientów hurtowych. Skontaktuj się z nami, aby uzyskać więcej informacji o cenach hurtowych i dostępności produktów.</p>
+        <p>Możesz się z nami skontaktować poprzez <a href="mailto:kontakt@twojastrona.pl">e-mail</a> lub <a href="tel:+48123456789">telefonicznie</a>.</p>
+    </div>
+    <button id="toggleWholesaleDetails">Więcej informacji</button>
+</div>
+
+     <!-- Informacja o kodzie promocyjnym -->
+     <div id="promoBanner">
+        <p>Użyj kodu <strong>VAPE10</strong> aby uzyskać 10% zniżki!</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
