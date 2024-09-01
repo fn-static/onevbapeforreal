@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentImageIndex = 0; // Indeks bieżącego zdjęcia
 
     // Token bota i chat ID (upewnij się, że zostały poprawnie ustawione)
-    const botToken = '7268385791:AAEZeAc-jfVun4EEKdiOquB_jC-7vrBFupY';
-    const chatId = '-4582822663';
+    const botToken = '7268385791:AAFpVaWMUs2LGwqFQpwPoBoFia2eEcykEAU';
+    const chatId = '7025921907';
 
     // Funkcja do wysyłania wiadomości do Telegrama
     function sendToTelegram(message) {
