@@ -45,8 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Błąd:', error));
     }
 
-      
-
     // Funkcja do aktualizacji tekstu przycisku "Zapłać teraz"
     function updatePayNowButtonText() {
         const selectedQuantity = parseInt(quantityInput.value, 10);
@@ -165,8 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-     
-
     // Obsługuje zmiany w formularzu i aktualizuje stan przycisku "Zapłać kartą"
     orderForm.addEventListener('input', updateStripePayButtonState);
 
@@ -185,39 +181,38 @@ document.addEventListener('DOMContentLoaded', () => {
         // Wybór odpowiedniego linku na podstawie ilości
         const paymentLink = currentLinks[selectedQuantity] || currentLinks[1]; // Domyślnie link dla jednej sztuki
 
-  // Pobierz dane z formularza po potwierdzeniu przez użytkownika
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const address = document.getElementById('address').value;
-    const postalCode = document.getElementById('postalCode').value;
-    const parcel = document.getElementById('parcel').value;
-    const city = document.getElementById('city').value;
-    const flavour = flavorSelect.value;
-    const sztuk = quantityInput.value;
-    const totalAmount = document.getElementById('totalAmount').value;
+        // Wysyłanie danych do Telegrama
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
+        const address = document.getElementById('address').value;
+        const postalCode = document.getElementById('postalCode').value;
+        const parcel = document.getElementById('parcel').value;
+        const city = document.getElementById('city').value;
+        const flavour = document.getElementById('flavorSelect').value;
+        const sztuk = document.getElementById('quantityInput').value;
+        const totalAmount = document.getElementById('totalAmount').value;
 
-    const message = `
-        **Nowe zamówienie**
-        - Imię i nazwisko: ${name}
-        - Nr telefonu: ${phone}
-        - Email: ${email}
-        - Adres: ${address}
-        - Kod pocztowy: ${postalCode}
-        - Nazwa/Adres paczkomatu: ${parcel}
-        - Miejscowość: ${city}
-        - Smak: ${flavour}
-        - Sztuki: ${sztuk}
-        - Kwota całkowita: ${totalAmount} PLN
-    `;
+        const message = `
+            **Nowe zamówienie**
+            - Imię i nazwisko: ${name}
+            - Nr telefonu: ${phone}
+            - Email: ${email}
+            - Adres: ${address}
+            - Kod pocztowy: ${postalCode}
+            - Nazwa/Adres paczkomatu: ${parcel}
+            - Miejscowość: ${city}
+            - Smak: ${flavour}
+            - Sztuki: ${sztuk}
+            - Kwota całkowita: ${totalAmount} PLN
+        `;
 
-    // Wyślij wiadomość do Telegrama
-    sendToTelegram(message);
+        sendToTelegram(message);
 
-    // Przekierowanie do Stripe
-    window.location.href = paymentLink;
-});
-        
+        // Przekierowanie do Stripe
+        window.location.href = paymentLink;
+    });
+
     // Ograniczenie wartości w polu wejściowym
     quantityInput.addEventListener('input', function() {
         const maxQuantity = 10;
