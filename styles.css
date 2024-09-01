@@ -559,3 +559,91 @@ header.small .animated-heading {
 #wholesaleBanner button:hover {
     background-color: #0056b3; /* Ciemniejszy kolor przycisku na hover */
 }
+
+
+
+.product-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-item.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.product-item.disabled::before {
+    content: "Niedostępne";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.flavor-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.flavor-option .flavor-name {
+    margin-right: 10px;
+}
+
+.flavor-option .availability {
+    color: red;
+    font-style: italic;
+    display: none;
+}
+
+.flavor-option.unavailable .availability {
+    display: inline;
+}
+
+.flavor-option.unavailable .flavor-name {
+    color: gray;
+    text-decoration: line-through;
+}
+
+button.inactive {
+    background-color: #ddd; /* Szare tło */
+    color: #888; /* Szary tekst */
+    cursor: not-allowed; /* Kursor zakazany */
+}
+
+/* Styl dla aktywnego przycisku */
+button.active {
+    background-color: #007bff; /* Niebieskie tło */
+    color: #fff; /* Biały tekst */
+    cursor: pointer; /* Normalny kursor */
+}
+
+
+/* Opcjonalnie: Możesz dodać efekt pulsacji, jeśli chcesz */
+@keyframes pulse {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+    }
+}
+
+option.unavailable.pulse {
+    animation: pulse 1.5s infinite;
+}
