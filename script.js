@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById("contactButton").addEventListener("click", function() {
-        window.location.href = "https://twojalink.com";  // Zastąp "https://twojalink.com" właściwym linkiem
+        window.location.href = "https://www.instagram.com/one_vapepl?igsh=MWt4cmZ5d284YWhmNA%3D%3D&utm_source=qr";  // Zastąp "https://twojalink.com" właściwym linkiem
 
         // Ukryj baner hurtowy
         if (wholesaleBanner) {
