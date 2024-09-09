@@ -647,3 +647,34 @@ button.active {
 option.unavailable.pulse {
     animation: pulse 1.5s infinite;
 }
+
+.video-container {
+    width: 400px; /* Szerokość kontenera wideo */
+    height: 300px; /* Wysokość kontenera wideo */
+    margin: 60px auto 20px; /* Marginesy dla centrowania kontenera oraz ustawienia go poniżej przycisków */
+    position: relative; /* Ustawienie pozycji kontenera dla lepszej kontroli */
+    overflow: hidden; /* Ukrywa część wideo, która wykracza poza kontener */
+    border: 2px solid #000; /* Opcjonalnie, obramowanie kontenera */
+    z-index: 1; /* Ustawienie z-index dla poprawienia widoczności */
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Dopasowuje wideo do kontenera */
+}
+
+/* Stylizacja sekcji, aby filmik był poniżej przycisków */
+#produkty, #kontakt {
+    position: relative;
+    z-index: 2; /* Upewnij się, że przyciski są nad filmikiem */
+}
+
+/* Stylizacja przycisków, jeśli potrzebujesz */
+.buttons {
+    position: relative;
+    z-index: 2; /* Upewnij się, że przyciski są nad filmikiem */
+}
